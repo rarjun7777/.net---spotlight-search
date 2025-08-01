@@ -1,0 +1,115 @@
+<Window x:Class="SearchApp.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AI Search Settings" 
+        Height="400" 
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" 
+                   Text="Settings" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Settings Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Hotkey Settings -->
+                <GroupBox Header="Global Hotkey" Margin="0,0,0,20">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" 
+                                   Text="Current Hotkey:" 
+                                   VerticalAlignment="Center" 
+                                   Margin="0,0,10,0"/>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="1" 
+                                   x:Name="CurrentHotkeyText"
+                                   Text="Ctrl + Space" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center"/>
+                        
+                        <Button Grid.Row="0" Grid.Column="2" 
+                                Content="Change" 
+                                Click="ChangeHotkey_Click"
+                                Width="80" 
+                                Height="25"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                   Text="Press the new key combination to set the hotkey"
+                                   x:Name="HotkeyInstructions"
+                                   Foreground="Gray" 
+                                   FontSize="11" 
+                                   Margin="0,5,0,0"
+                                   Visibility="Collapsed"/>
+                    </Grid>
+                </GroupBox>
+
+                <!-- Search Settings -->
+                <GroupBox Header="Search Settings" Margin="0,0,0,20">
+                    <StackPanel Margin="10">
+                        <CheckBox x:Name="AutoStartCheckBox" 
+                                  Content="Start with Windows" 
+                                  Margin="0,0,0,10"/>
+                        
+                        <CheckBox x:Name="CloseOnSearchCheckBox" 
+                                  Content="Close search window after performing search" 
+                                  Margin="0,0,0,10"/>
+                        
+                        <CheckBox x:Name="CloseOnFocusLossCheckBox" 
+                                  Content="Close search window when it loses focus" 
+                                  Margin="0,0,0,10"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- About Section -->
+                <GroupBox Header="About" Margin="0,0,0,20">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="AI Search v1.0.0" FontWeight="Bold"/>
+                        <TextBlock Text="A system-wide search application with Gemini integration" 
+                                   Foreground="Gray" 
+                                   Margin="0,5,0,0"/>
+                        <TextBlock Text="Built with .NET 8.0 and WPF" 
+                                   Foreground="Gray" 
+                                   Margin="0,2,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,20,0,0">
+            <Button Content="OK" 
+                    Click="Ok_Click" 
+                    Width="80" 
+                    Height="30" 
+                    Margin="0,0,10,0"/>
+            <Button Content="Cancel" 
+                    Click="Cancel_Click" 
+                    Width="80" 
+                    Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window> 
